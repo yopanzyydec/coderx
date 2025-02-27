@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortexion FEATURE | Top 1 UI World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="../hoho.css">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+    
+    <nav class="navbar">
+        <div class="logo">YOPAN ADICAHYA</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#docs">Documentation</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Yopan adicahya </> Code</h1>
+        <p>Berikut Adalah Kumpulan Beberapa Fitur Menarik Yang Mungkin Dapat Membantu Anda Untuk Mengembangkan Projek</p>
+    </section>
+
+    <div class="code-container">
+        <div class="code-header">
+            <h3 class="code-title">Plugins Hidetag WhatsApp Bot</h3>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre id="code-block">
+module.exports = {
+  command: "hidetag",
+  alias: ["h", "tagtext"],
+  category: ["group"],
+ description: "Untuk hidetag grup",
+  async run(m, { sock, text }) {
+ if (!m.isGroup) throw 'maaf khusus group'
+ if (!m.isOwner && !m.isAdmin) throw 'maaf command ini bisa nya ke admin and owner'
+  const groupMetadata = m.isGroup ? await sock.groupMetadata(m.cht).catch(e => {}) : ''
+  const participants = m.isGroup ? await groupMetadata.participants : ''
+await sock.sendMessage(m.cht, { text : text ? text : '' , mentions: participants.map(a => a.id)}, { quoted: m })
+ }
+}</pre>
+        </div>
+    </div>
+    <div class="code-container">
+        <div class="code-header">
+            <h3 class="code-title">Cases Hidetag WhatsApp Bot</h3>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre id="code-block">
+case "hidetag": case "z": case "h": {
+if (!isGroup) return m.reply(msg.group)
+if (!isAdmin && !isOwner) return m.reply(msg.admin)
+if (!m.quoted && !text) return m.reply(example("teksnya/replyteks"))
+var teks = m.quoted ? m.quoted.text : text
+var member = await groupMetadata.participants.map(e => e.id)
+sock.sendMessage(m.chat, {text: teks, mentions: [...member]})
+}
+break</pre>
+        </div>
+    </div>
+<div class="code-container">
+        <div class="code-header">
+            <h3 class="code-title">Cases Ai WhatsApp Bot</h3>
+            <button class="copy-btn">Copy Code</button>
+        </div>
+        <div class="code-content">
+            <pre id="code-block">
+case 'ai':
+            case 'chatgpt':
+            case 'fuai': {
+                try {
+                    if (!text) return m.reply(`Contoh: .bot Halo Ai`)
+
+                    // Fungsi untuk mendapatkan jawaban dari AI
+                    async function AI(content) {
+                        try {
+                            const response = await axios.post('https://luminai.my.id/', {
+                                content,
+                                cName: "S-AI",
+                                cID: "S-AIbAQ0HcC"
+                            })
+                            return response.data
+                        } catch (error) {
+                            console.error(error)
+                            throw error
+                        }
+                    }
+
+                    // Simulasi status mengetik
+                    await conn.sendPresenceUpdate('composing', m.chat)
+
+                    // Proses jawaban AI
+                    let sai = await AI(text)
+                    let pe = sai.result
+
+                    // Hentikan status mengetik setelah selesai
+                    await conn.sendPresenceUpdate('paused', m.chat)
+
+                    // Kirim jawaban akhir
+                    m.reply(pe)
+
+                } catch (err) {
+                    console.error(err)
+                    await conn.sendPresenceUpdate('paused', m.chat)
+                    m.reply('Terjadi kesalahan')
+                }
+            }
+            break</pre>
+        </div>
+    </div>
+    <section class="feature-grid">
+        <div class="feature-card">
+            <h3>Webs Bakalan Update Terus</h3>
+            <p>webs ini bakalan di update jika mendapatkan kode kode baru</p>
+        </div>
+        <div class="feature-card">
+            <h3>Pengembangan</h3>
+            <p>Mempermudah Pengguna Untuk Mengembangkan Sebuah Projek</p>
+        </div>
+        <div class="feature-card">
+            <h3>Work?</h3>
+            <p>Kami Bisa Saja Melakukan Kesalahan Pada Saat Membuat Kode...Jadi Perlu Di Perhatikan Lagi</p>
+        </div>
+    </section>
+<footer>
+  <center>
+  <p>Yopan adicahya</> Code: <a href="https://wa.me/6282143733959?text=bang">Hub Kami</a></p>
+  </center>
+</footer>
+    <script src="../anunyabang.js">
+
+    </script>
+</body>
+</html>
